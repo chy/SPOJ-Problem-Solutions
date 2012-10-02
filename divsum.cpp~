@@ -1,0 +1,24 @@
+#include<iostream>
+#include <math.h>
+using namespace std;
+
+int main(){
+	int num_cases; cin>>num_cases;
+	int num=0;
+	int sum=0;
+	for(int i =0; i<num_cases;i++){
+		cin>>num; sum = 0;
+		cout << "num: "<< num <<" \n";
+		for(int j = 0; j<(int)sqrt(num); j++){
+			cout <<"J: "<< j <<" \n";			
+			if(num%j==0){
+				cout << "sum "<<sum << "\n";
+				sum+=num;
+				sum+=num/j;
+			}
+		}
+		if(num%(int)sqrt(num)==0){ sum+= (int)sqrt(num);}
+		cout << sum << '\n';
+	}
+
+}

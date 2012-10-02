@@ -1,0 +1,48 @@
+#include<iostream>
+#include<math.h>
+#include<stdlib.h>
+
+using namespace std;
+
+
+void sieve_of_eratosthenes(unsigned long m,unsigned long n){
+	unsigned long prime_array[n+1-m];
+
+	for(unsigned long r = 2; r <= n; r++){
+		prime_array[r] = 1;
+	}
+	
+	for(int i = 2; pow(i,2) <= n; i++){
+		int p = 0;
+		if(m < 10 || i < 10) p = 2;
+		else p = (int)(log10(m)/log10(i));
+				
+		for(int j = pow(i,p); j <= n; j+= i){//each j is a multiple of i >= i**p
+				prime_array[abs(j-m)] = 0; // set j false
+			}
+		
+	}
+
+	for(unsigned long q = 0; q <= (n+1-m); q++){
+		if(prime_array[q] != 0) cout << q << endl;
+
+	}
+}
+
+
+
+int main(){
+
+	int num_cases = 0;cin >> num_cases;
+	unsigned long m = 0; unsigned long n = 0;
+	cin >> m; cin >> n;
+
+	for(int t = 0; t < num_cases; t++){
+		sieve_of_eratosthenes(m,n);
+		if(t < num_cases-1) {cin >> m; cin >> n;}
+	}
+
+
+}
+
+

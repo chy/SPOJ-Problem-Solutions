@@ -1,0 +1,31 @@
+#http://www.spoj.pl/problems/JULKA/
+
+
+k + n = total
+
+k - n = diff
+
+k = total - n
+
+total - 2n = diff
+-2n = diff - total
+n = -1/2(diff - total)
+k - -1/2(diff - total) = diff
+k + 1/2(diff - total) = diff
+k = diff - 1/2(diff - total)
+
+
+
+
+def apples(total,more):
+	total = int(total)
+	more = int(more)	
+	return [total - (total - more)/2,  -1*((total - more)/2)]
+cases = []
+for i in range(0, 5):
+	cases.append(raw_input() + " " + raw_input())
+for element in cases:
+	out = apples(element.split()[0], element.split()[1])
+	print out[0]
+	print out[1]
+
